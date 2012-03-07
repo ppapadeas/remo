@@ -10,12 +10,18 @@ Mozilla Reps - Report
     {{ report }}
     {% for comment in comments %}
       {{ comment.user.userprofile.display_name }} {{ comment.created_on }}<br/>
+      <form method="post" action="{{ comment.get_absolute_delete_url() }}">
+        {{ csrf() }}
+        <button type="submit" class="small blue button nice radius">
+          delete comment
+        </button>
+      </form>
     {% endfor %}
     <form method="post" actions="{{ report_comment_form_url }}" class="custom">
       {{ csrf() }}
       {{ report_comment_form }}
       <button type="submit" class="medium blue button nice radius">
-	Send Comment
+        Send Comment
       </button>
     </form>
   </div>

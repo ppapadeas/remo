@@ -16,14 +16,20 @@ def latest_object_or_none(model_class, field_name=None):
 
 def month2number(month):
     """Convert to month name to number."""
-    try:
-        return datetime.datetime.strptime(month, "%B").month
-    except ValueError:
-        raise Http404
+    return datetime.datetime.strptime(month, "%B").month
+
+
+def number2month(month, full_name = True):
+    """Convert to month name to number."""
+    if full_name:
+        format = "%B"
+    else:
+        format = "%b"
+    return datetime.datetime(year=2000, day=1, month=month).strftime(format)
 
 
 def get_or_create_instance(model_class, **kwargs):
     try:
-        return model_class.objects.get(**kwargs)
+        return model_class.objects.get(**kwargs), False
     except model_class.DoesNotExist:
-        return model_class(**kwargs)
+        return model_class(**kwargs), True

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}
+Mozilla Reps - Report
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="twelve columns">
+    <form method="post" class="custom"
+          action="{{ url('reports_edit_report',
+		         pageuser.userprofile.display_name, year, month) }}">
+      {{ csrf() }}
+      {{ reportform }}
+      {{ reporteventform }}
+      {{ reportlinkform }}
+      <button type="submit" class="medium blue button nice radius">
+	Send Report
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -6,6 +6,8 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 
+import remo.base.utils as baseutils
+
 OVERDUE_DAY = 7
 
 
@@ -69,6 +71,16 @@ class ReportComment(models.Model):
 
     class Meta:
         ordering = ['id']
+
+    def get_absolute_delete_url(self):
+        up = self.user.userprofile
+        month_name = baseutils.number2month(self.report.month.month)
+        return reverse('reports_delete_report_comment',
+                       kwargs={'display_name': up.display_name,
+                               'year': self.report.month.year,
+                               'month': month_name,
+                               'comment_id': self.id})
+
 
 class ReportEvent(models.Model):
     """Event in Report Model."""

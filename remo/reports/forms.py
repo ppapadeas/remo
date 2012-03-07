@@ -8,6 +8,11 @@ ReportLinkFormset = forms.models.inlineformset_factory(Report,
                                                        ReportLink)
 
 class ReportForm(forms.ModelForm):
+    delete_report = forms.BooleanField(required=False, initial=False)
+    recruits = forms.ChoiceField(required=True,
+                                 choices=([(i, '%d' % i) for i in range(0,10)] +
+                                          [(10, '10+')]))
+
     def clean(self):
         cleaned_data = super(ReportForm, self).clean()
         if cleaned_data['empty'] == True:

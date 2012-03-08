@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block pagetitle %}
-Mozilla Reps - Report
+Mozilla Reps - Report of {{ report.user.userprofile.display_name }}
+for {{ report.month.strftime('%B %Y') }}
 {% endblock %}
 
 {% block content %}
@@ -10,6 +11,7 @@ Mozilla Reps - Report
     {{ report }}
     {% for comment in comments %}
       {{ comment.user.userprofile.display_name }} {{ comment.created_on }}<br/>
+      {{ comment.comment }} <br/>
       <form method="post" action="{{ comment.get_absolute_delete_url() }}">
         {{ csrf() }}
         <button type="submit" class="small blue button nice radius">

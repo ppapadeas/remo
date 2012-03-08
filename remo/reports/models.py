@@ -39,7 +39,8 @@ class Report(models.Model):
 
     @property
     def is_overdue(self):
-        return self.created_on.day > OVERDUE_DAY
+        return (self.created_on.day > OVERDUE_DAY and
+                self.created_on.month > self.month.month)
 
 
 @receiver(pre_save, sender=Report)

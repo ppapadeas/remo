@@ -7,17 +7,18 @@ ReportEventFormset = forms.models.inlineformset_factory(Report,
 ReportLinkFormset = forms.models.inlineformset_factory(Report,
                                                        ReportLink)
 
+
 class ReportForm(forms.ModelForm):
     delete_report = forms.BooleanField(required=False, initial=False)
-    recruits = forms.ChoiceField(required=True,
-                                 choices=([(i, '%d' % i) for i in range(0,10)] +
-                                          [(10, '10+')]))
+    recruits = forms.ChoiceField(
+        required=True,
+        choices=([(i, '%d' % i) for i in range(0, 10)] + [(10, '10+')]))
 
     def clean(self):
         cleaned_data = super(ReportForm, self).clean()
         if cleaned_data['empty'] == True:
             for text_field in ['recruits_comments', 'past_items',
-                          'next_items', 'flags']:
+                               'next_items', 'flags']:
                 cleaned_data[text_field] = ''
             cleaned_data['recruits'] = 0
         return cleaned_data
@@ -28,7 +29,9 @@ class ReportForm(forms.ModelForm):
         include = ['empty', 'recruits', 'recruits_comments', 'past_items',
                    'next_items', 'flags']
 
+
 class ReportCommentForm(forms.ModelForm):
+
     class Meta:
         model = ReportComment
         exclude = ['report', 'user']
@@ -36,6 +39,7 @@ class ReportCommentForm(forms.ModelForm):
 
 
 class ReportEventForm(forms.ModelForm):
+
     class Meta:
         model = ReportEvent
         exclude = ['report']
@@ -43,6 +47,7 @@ class ReportEventForm(forms.ModelForm):
 
 
 class ReportLinkForm(forms.ModelForm):
+
     class Meta:
         model = ReportLink
         export = ['report']

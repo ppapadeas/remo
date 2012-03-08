@@ -1,7 +1,5 @@
 import datetime
 
-from django.http import Http404
-
 
 def latest_object_or_none(model_class, field_name=None):
     """Identical to Model.latest, except instead of throwing exceptions,

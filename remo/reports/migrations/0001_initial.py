@@ -22,6 +22,7 @@ class Migration(SchemaMigration):
             ('past_items', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('next_items', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('flags', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
+            ('overdue', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal('reports', ['Report'])
 
@@ -123,6 +124,7 @@ class Migration(SchemaMigration):
             'mentor': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'reports_mentored'", 'null': 'True', 'to': "orm['auth.User']"}),
             'month': ('django.db.models.fields.DateField', [], {}),
             'next_items': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
+            'overdue': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'past_items': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'recruits': ('django.db.models.fields.PositiveSmallIntegerField', [], {'default': '0'}),
             'recruits_comments': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),

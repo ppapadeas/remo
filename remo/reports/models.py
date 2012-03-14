@@ -25,6 +25,7 @@ class Report(models.Model):
     past_items = models.TextField(blank=True, default='')
     next_items = models.TextField(blank=True, default='')
     flags = models.TextField(blank=True, default='')
+    overdue = models.BooleanField(default=False)
 
     class Meta:
         ordering=['-month']
@@ -36,11 +37,6 @@ class Report(models.Model):
                        kwargs={'display_name': up.display_name,
                                'year': self.month.year,
                                'month': self.month.strftime("%B")})
-
-    @property
-    def is_overdue(self):
-        return (self.created_on.day > OVERDUE_DAY and
-                self.created_on.month > self.month.month)
 
 
 @receiver(pre_save, sender=Report)
@@ -55,6 +51,13 @@ def report_set_month_day_pre_save(sender, instance, **kwargs):
     """Set month day to the first day of the month."""
     instance.month = datetime.datetime(year=instance.month.year,
                                        month=instance.month.month, day=1)
+
+@receiver(pre_save, sender=Report)
+def report_set_overdue_pre_save(sender, instance, **kwargs):
+    """Set overdue on Report object creation."""
+    if not instance.id:
+        instance.overdue =  (self.created_on.day > OVERDUE_DAY and
+                             self.created_on.month > self.month.month)
 
 
 @receiver(post_save, sender=Report)

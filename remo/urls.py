@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
+from django.views.generic.simple import direct_to_template
 
 
 handler404 = 'remo.base.views.custom_404'
@@ -25,6 +26,9 @@ urlpatterns = patterns('',
         {'template_name': 'plainlogin.html'}, name='plainlogin'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
         {'next_page': '/'}, name='logout'),
+
+    #dashboard_mockup
+    url(r'^dashboard_mockup/$', direct_to_template, {'template': 'dashboard_mockup.html'}),
 )
 
 ## In DEBUG mode, serve media files through Django.

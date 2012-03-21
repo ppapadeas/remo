@@ -508,7 +508,7 @@ select#id_user {
 }
 
 /* -----------------------------------------
-   Edit Reports Styles
+   Reports Styles
 ----------------------------------------- */
 
 .report-instructions {
@@ -519,6 +519,21 @@ select#id_user {
     margin-top: 20px;
 }
 
-.report-item textarea, select {
+.report-item textarea, select, p {
     margin-top: 20px !important;
+}
+
+.report-comment {
+    margin-top: 20px !important;
+}
+
+.report-comment .report-delete-comment {
+    font-size: 22px;
+    line-height: .5;
+    position: relative;
+    float: right;
+    color: #aaa;
+    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+    font-weight: bold;
+    cursor: pointer;
 }

@@ -17,6 +17,7 @@
 :: Logo gray Style
 :: Featured rep;
 :: About page Styles
+:: Reports page Styles
 */
 
 
@@ -639,4 +640,26 @@ select#id_user {
 
 #about-navigation nav {
     margin-bottom: 50px !important;
+}
+
+/* -----------------------------------------
+   Reports page Styles
+----------------------------------------- */
+
+#search-button-box {
+    text-align: center;
+    margin-top: 15px;
+}
+
+#reports-list {
+    width: 100%;
+}
+
+#reports-filter {
+    float: right;
+    margin: 5px 0px;
+}
+
+.reports-pagination {
+    float: right;
 }

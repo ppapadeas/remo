@@ -424,6 +424,10 @@ ul.orbit-bullets li.active {
     border-radius: 0px !important;
 }
 
+.long {
+    height: 200px;
+}
+
 .input-text {
     margin: 20px 0px !important;
     background: none !important;
@@ -568,6 +572,14 @@ small.error {
     text-align:center;
     color: #ccc;
     cursor: default;
+}
+
+.mirror {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
 }
 
 /* -----------------------------------------

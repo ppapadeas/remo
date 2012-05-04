@@ -100,6 +100,10 @@
               </div>
             </div>
           {% endif %}
+          <div class="align-right">
+            <a href="#" data-reveal-id="mail-modal"
+               class="small white button nice radius">Mail my mentees</a>
+          </div>
         </div>
         <!-- end mentees list block -->
 
@@ -129,6 +133,10 @@
               </div>
             </div>
           {% endif %}
+          <div class="align-right">
+            <a href="#" data-reveal-id="mail-modal"
+               class="small white button nice radius">Mail my mentees</a>
+          </div>
         </div>
         <!-- end mentees grid block -->
 
@@ -792,6 +800,32 @@
     <!-- End Admin block -->
   </div>
 </div>
+
+<!-- Mail my mentees Reveal Modal -->
+<div id="mail-modal" class="reveal-modal">
+  <a class="close-reveal-modal">&#215;</a>
+  <p class="lead">Mail your mentees</p>
+  <h4>Copy and paste addresses:</h4>
+  <p>pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com, pierros@mozilla.com, giorgos@mozilla.com</p>
+  <h4>or mail all your mentees directly:</h4>
+  <input type="text" placeholder="email_of@mentor.com"
+    value="" disabled="disabled"
+    name="email_of_mentor" class="input-text big">
+  <input type="text" placeholder="Subject"
+    value=""
+    name="subject" class="input-text big">
+  <textarea class="flat long" placeholder="Body of email"
+    name="bio"></textarea>
+  <div class="row">
+    <div id="send-mail" class="twelve columns align-right">
+      <button type="submit" class="medium blue button nice radius">
+        Send email
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Mail my mentees Reveal Modal End -->
+
 {% endblock %}
 
 {% block bottomextra %}

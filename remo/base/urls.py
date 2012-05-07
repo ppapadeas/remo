@@ -7,4 +7,6 @@ urlpatterns = patterns('',
         name='about'),
     url(r'faq/$', direct_to_template, {'template': 'faq.html'},
         name='faq'),
+    url(r'reports/$', direct_to_template, {'template': 'reports.html'},
+        name='reports'),
 )

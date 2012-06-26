@@ -10,7 +10,7 @@
 -------------------- */
 
 .top-margined {
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
 
 .align-right {
@@ -44,6 +44,14 @@
 
 .metabold {
     font-family: 'MetaBold' !important;
+}
+
+.has-tip {
+    font-weight: normal !important;
+}
+
+.tooltip {
+    color: #fff !important;
 }
 
 /* -----------------------------------------
@@ -139,6 +147,10 @@ h4 {
 
 .required-field:before {
     content: '\*';
+}
+
+.end-row {
+    padding-bottom: 80px !important;
 }
 
 /* Setting tabzilla z-index to 30 so it is displayed below modals */
@@ -305,9 +317,12 @@ ul.orbit-bullets li {
     -moz-box-shadow: 0 2px 5px gray;
 }
 
-.grid-profile-image img {
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.grid-profile-image {
+    height: 50px !important;
+    img {
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
 }
 
 .grid-profile-text img {
@@ -790,4 +805,102 @@ ul.mreports li.editable a {
 #searchfield {
     float: right !important;
     width: 95% !important;
+}
+
+/* -----------------------------------------
+   Event Styles
+----------------------------------------- */
+
+.event-single-date {
+    .top-margined;
+    padding: 10px !important;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.event-single-date-number {
+    .metabold;
+    margin-top: 10px;
+    font-size: 60px;
+    .grayed;
+    text-shadow: 1px 1px 0px rgba(200, 200, 200, 0.75);
+    min-width: 60px;
+}
+
+.event-single-title {
+    .opensans !important;
+}
+
+.event-single-date-month {
+    .opensans;
+    font-weight: bold;
+    font-size: 20px;
+    .grayed;
+    .align-right;
+    text-shadow: 1px 1px 0px rgba(200, 200, 200, 0.75);
+    min-width: 94px;
+}
+
+.event-single-date-day {
+    font-style: italic;
+    font-size: 15px;
+    margin-top: 10px;
+    .align-right;
+    .grayed;
+}
+
+.event-single-date-times {
+    .align-center;
+    border-left: 1px solid #ddd;
+    border-bottom: none !important;
+}
+
+.event-single-date-time {
+    .opensanslight;
+    margin-left: 20px !important;
+    .grayed;
+    font-size: 20px;
+}
+
+.event-single-date-time-start {
+    .event-single-date-time;
+}
+
+.event-single-date-time-end {
+    .event-single-date-time;
+    margin-top: 8px !important;
+}
+
+.event-single-attendee {
+    padding: 10px !important;
+    margin-left: 10px !important;
+    margin-top: 15px !important;
+    cursor: pointer;
+    -moz-transition:box-shadow .1s ease-in;
+    -webkit-transition:box-shadow .1s ease-in;
+    transition:box-shadow .1s ease-in;
+}
+
+.event-single-attendee:hover {
+    -moz-transition:box-shadow .1s ease-out;
+    -webkit-transition:box-shadow .1s ease-out;
+    transition:box-shadow .1s ease-out;
+    box-shadow: 0 2px 5px gray;
+    -webkit-box-shadow: 0 2px 5px gray;
+    -moz-box-shadow: 0 2px 5px gray;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.event-single-attendee-text {
+    .grayed;
+    .align-right;
+    font-style: italic;
+    margin: 0px !important;
+}
+
+.event-single-signups-count {
+    .opensanslight;
+    margin-top: 25px !important;
+    font-size: 18px;
 }

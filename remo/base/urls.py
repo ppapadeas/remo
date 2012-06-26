@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'faq/$', direct_to_template, {'template': 'faq.html'},
         name='faq'),
     url(r'^$', 'remo.base.views.main', name='main'),
+    url(r'event_mockup/$', direct_to_template, {'template': 'event_mockup.html'}),
 )

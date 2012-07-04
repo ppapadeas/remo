@@ -841,6 +841,11 @@ ul.mreports li.editable a {
     min-width: 94px;
 }
 
+.event-single-date-month-second {
+    .event-single-date-month;
+    margin-top: 8px;
+}
+
 .event-single-date-day {
     font-style: italic;
     font-size: 15px;
@@ -857,9 +862,10 @@ ul.mreports li.editable a {
 
 .event-single-date-time {
     .opensanslight;
-    margin-left: 20px !important;
+    margin-left: 15px !important;
     .grayed;
     font-size: 20px;
+    text-align: left;
 }
 
 .event-single-date-time-start {
@@ -869,6 +875,35 @@ ul.mreports li.editable a {
 .event-single-date-time-end {
     .event-single-date-time;
     margin-top: 8px !important;
+}
+
+.event-single-date-day-first {
+    .event-single-date-time;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.event-single-date-day-second {
+    .event-single-date-time;
+    margin-top: 8px !important;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.event-single-date-multitimes-wrap {
+    border-bottom: none !important;
+    :hover {
+        color: black;
+    }
+    text-align: right !important;
+}
+
+.event-single-date-multitimes {
+    .pictogram;
+    font-size: 20px;
+    margin-top: -5px !important;
+    margin-right: -18px !important;
+    text-decoration: none;
 }
 
 .event-single-attendee {

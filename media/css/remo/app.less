@@ -143,14 +143,17 @@ h4 {
     margin-bottom: -40px;
     position: relative;
     top: -40px;
-}
-
-.required-field:before {
+    :before {
     content: '\*';
+    }
 }
 
 .end-row {
     padding-bottom: 80px !important;
+}
+
+textarea {
+    font-family: "Helvetica Neue","HelveticaNeue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 
 /* Setting tabzilla z-index to 30 so it is displayed below modals */
@@ -429,7 +432,7 @@ ul.orbit-bullets li {
     .grayed;
     font-size: 10px;
     text-align: right;
-    margin-top: -12px;
+    margin-top: -5px !important;
 }
 
 .edit-profile-item {
@@ -938,4 +941,8 @@ ul.mreports li.editable a {
     .opensanslight;
     margin-top: 25px !important;
     font-size: 18px;
+}
+
+.event-single-info {
+    height: 200px;
 }

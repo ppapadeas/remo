@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}
+Mozilla Reps - Sample Event Edit
+{% endblock %}
+
+{% block content %}
+<form class="custom" method="post"
+      action="">
+  <div class="row">
+    <div class="nine columns">
+      <h4>Editing Fosscomm 2012</h4>
+    </div>
+    <div id="" class="three columns align-right">
+      <a href="#" class="small red button nice radius"
+          data-reveal-id="delete-event">Delete event</a>
+      <a href="#"
+         class="small green button nice radius">Save event</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="six columns">
+      <div class="row">
+        <div class="one columns pictogram">
+          J <!-- Name and Description -->
+        </div>
+        <div class="eleven columns">
+          <input type="text" placeholder="Event name" name="event_name"
+             value=""
+             class="input-text big">
+          <div class="required-field"></div>
+          <textarea class="flat" placeholder="Description of event"
+            name="event_description"></textarea>
+          <p class="more-info">Minimum 50 characters.<br> Any practical
+          info should be added in the additional info section below.</p>
+          <input type="text" placeholder="External link" name="event_link"
+             value=""
+             class="input-text big">
+        </div>
+      </div>
+      <div class="row">
+        <div class="one columns pictogram">
+          } <!-- Date and Times -->
+        </div>
+        <div class="eleven columns">
+          <input type="text" placeholder="Start date" name="event_start_date"
+             value=""
+             class="input-text big">
+          <div class="required-field"></div>
+          <input type="text" placeholder="Start hour" name="event_start_hour"
+             value=""
+             class="input-text">
+          <div class="required-field"></div>
+          <!-- Dropdown for zone hour goes here -->
+          <input type="text" placeholder="End date" name="event_end_date"
+             value=""
+             class="input-text big">
+          <div class="required-field"></div>
+          <input type="text" placeholder="End hour" name="event_end_hour"
+             value=""
+             class="input-text">
+          <div class="required-field"></div>
+          <p class="more-info">Please enter date and time local to the venue.</p>
+        </div>
+      </div>
+    </div>
+    <div class="six columns">
+      <div class="row">
+        <div class="one columns pictogram">
+          , <!-- Location -->
+        </div>
+        <div class="eleven columns">
+          <input type="text" placeholder="Venue" value=""
+                 name="event-venue" class="input-text big">
+          <div class="required-field"></div>
+          <p class="more-info">If you don't know the name of venue yet, please type "TBD"</p>
+          <div class="align-right">
+            <a href="#" class="small white button nice radius"
+               data-reveal-id="map-point">Point event venue in map</a>
+          </div>
+          <input type="text" placeholder="City" value=""
+                 name="event-city" class="input-text big">
+          <div class="required-field"></div>
+          <input type="text" placeholder="State or Region"
+                 value=""
+                 name="event-region" class="input-text big">
+          <div class="required-field"></div>
+          <select class="nice" name="country">
+              <option value="">
+                Country
+              </option>
+          </select>
+          <div class="required-field"></div>
+          <input type="hidden" placeholder="Latitude"
+                 value=""
+                 name="lat" class="input-text point-lat">
+          <input type="hidden" placeholder="Longitude"
+                 value=""
+                 name="lon" class="input-text point-long">
+        </div>
+      </div>
+      <div class="row">
+        <div class="one columns pictogram">
+          g <!-- People -->
+        </div>
+        <div class="eleven columns profile-item">
+          <select name="event-owner">
+              <option value="">
+                Name of the owner
+              </option>
+          </select>
+          <p class="more-info">Please specify the event owner.</p>
+          <label for="mozilla-bit">
+            <input type="checkbox" checked="checked"
+                   id="mozilla-bit" name="mozilla_event">
+            <span class="custom checkbox">
+            </span>
+            Is Mozilla organizing this event?
+          </label>
+          <p class="more-info">If this event is not directly organized by<br> 
+          a Mozillian (e.g. FOSDEM, OSCON) please DO NOT check this box.</p>
+          <select class="nice" name="event_estimated_attendance">
+              <option value="">
+                1-10
+              </option>
+              <option value="">
+                11-50
+              </option>
+              <option value="">
+                51-100
+              </option>
+              <option value="">
+                101-500
+              </option>
+              <option value="">
+                501-1000
+              </option>
+              <option value="">
+                1000+
+              </option>
+          </select>
+          <p class="more-info">Please specify the estimated attendance to this event.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row end-row">
+    <div class="six columns">
+      <div class="row">
+        <div class="one columns pictogram">
+          a <!-- Editable Content wiki like -->
+        </div>
+        <div class="eleven columns profile-item">
+          <textarea class="flat event-single-info" placeholder="Additional info"
+            name="event_info"></textarea>
+          <p class="more-info">In this field you can use <a 
+          href="http://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a>
+          syntax to add extra content, like <br> schedule, booth times and location, instructions for participants etc.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="six columns">
+
+      <!-- Hashtag -->
+      <div class="row">
+        <div class="one columns pictogram">
+          Y
+        </div>
+        <div class="eleven columns">
+          <input type="text" placeholder="Event Hashtag" name="event_hashtag"
+             value=""
+             class="input-text big">
+          <p class="more-info">Tag your pictures in Flickr and your tweets with this hashtag.</p>
+        </div>
+      </div>
+
+      <!-- Budget and Swag -->
+      <div class="row">
+        <div class="one columns pictogram">
+          (
+        </div>
+        <div class="eleven columns">
+          <div class="row">
+            <div class="six columns">
+              <input type="text" placeholder="Swag Request" name="event_swag_bug"
+                 value=""
+                 class="input-text big">
+              <p class="more-info">Swag Request bug number</p>
+            </div>
+            <!-- Remove following div if we have bug number and replace class of previous div with "twelve columns" -->
+            <div class="six columns align-right top-margined">
+              <a href="https://bugzilla.mozilla.org/form.reps.swag"
+                 target="_blank"
+                 class="small white button nice radius">
+                New Swag Request
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="six columns">
+              <input type="text" placeholder="Budget Request" name="event_budget_bug"
+                 value=""
+                 class="input-text big">
+              <p class="more-info">Budget Request bug number</p>
+            </div>
+            <!-- Remove following div if we have bug number and replace class of previous div with "twelve columns" -->
+            <div class="six columns align-right top-margined">
+              <a href="https://bugzilla.mozilla.org/form.reps.budget"
+                 target="_blank"
+                 class="small white button nice radius">
+                New Budget Request
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics -->
+
+      <!-- This gets replicated -->
+      <div class="row">
+        <div class="one columns pictogram">
+          6
+        </div>
+        <div class="eleven columns">
+          <input type="text" placeholder="Metric" name="event_metric"
+             value=""
+             class="input-text big">
+          <input type="text" placeholder="Success Scenario" name="event_metric"
+             value=""
+             class="input-text big">
+          <!-- Delete metric goes here -->
+
+          <div class="align-right">
+            <a id="reports-add-link-button" href="javascript:void(0)"
+               class="small white button nice radius">Add another metric</a>
+          </div>
+        </div>
+      </div>
+      <!-- End of replication part -->
+
+    </div>
+  </div>
+</form>
+
+<!-- Modals section -->
+
+<!-- Map Point Reveal Modal -->
+<div id="map-point" class="reveal-modal">
+  <a class="close-reveal-modal">&#215;</a>
+  <div class="row">
+    <div class="twelve columns">
+      <p class="lead">
+        Please click the venue location in map
+      </p>
+      <div id="map_point" class="smallmap">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="six columns">
+      <input type="text" placeholder="Latitude" class="input-text point-lat-temp">
+      <input type="text" placeholder="Longitude" class="input-text point-long-temp">
+    </div>
+    <div class="six columns use-these">
+      <a href="#" class="small blue button nice radius close-reveal-modal">
+        Use these geo-coordinates &raquo;
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Event Reveal Modal -->
+<div id="delete-event" class="reveal-modal">
+  <a class="close-reveal-modal">&#215;</a>
+  <p class="lead">
+    Are you sure you want to do that?
+  </p>
+  <h2>
+    Warning!
+  </h2>
+  <p>
+    By pressing the following button you will permanently and irreversibly delete this event.
+  </p>
+      <button class="large red button nice radius close-reveal-modal">
+        Delete event
+      </button>
+</div>
+{% endblock %}
+
+{% block bottomextra %}
+  <!-- Needs to be made url -->
+  <script src="../media/js/jquery.tooltips.js"></script>
+{% endblock %}
+

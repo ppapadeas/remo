@@ -25,19 +25,17 @@ Mozilla Reps - Sample Event
         <div class="row">
           <div class="ten columns end">
             <div class="event-single-date panel row">
-              <div class="six columns">
-                <div class="event-single-date-month">23 APR 2012</div>
-                <div class="event-single-date-month-second">26 APR 2012</div>
+              <div class="three columns">
+                <div class="event-single-date-number">25</div>
               </div>
               <div class="four columns">
-                <div class="event-single-date-times">
-                  <div class="event-single-date-day-first">Friday</div>
-                  <div class="event-single-date-day-second">Monday</div>
-                </div>
+                <div class="event-single-date-month">APR 2012</div>
+                <div class="event-single-date-day">Friday</div>
               </div>
-              <div class="two columns">
-                <div class="event-single-date-multitimes-wrap has-tip tip-bottom" data-width="120" title="Event starts daily at 09:00 and ends 21:00 local time. Thats 21:00-06:00 yours.">
-                  <div class="event-single-date-multitimes">}</div>
+              <div class="two columns end">
+                <div class="event-single-date-times has-tip tip-bottom" data-width="120" title="That's local times. Your time: 24:00 - 03:00">
+                  <div class="event-single-date-time-start">20:00</div>
+                  <div class="event-single-date-time-end">21:00</div>
                 </div>
               </div>
             </div>
@@ -45,8 +43,6 @@ Mozilla Reps - Sample Event
         </div>
       </div>
     </div>
-  </div>
-  <div class="seven columns">
     <div class="row">
       <div class="one columns pictogram">
         J
@@ -71,13 +67,81 @@ Mozilla Reps - Sample Event
       </div>
     </div>
   </div>
+  <div class="seven columns">
+    <div class="row">
+      <div class="one columns pictogram">
+        ,
+      </div>
+      <div class="eleven columns">
+        <div class="row">
+          <div class="five columns">
+            <p class="profile-item">
+              <span class="white radius label">
+                City
+              </span>
+              &nbsp;
+              Athens
+            </p>
+            <p class="profile-item">
+              <span class="white radius label">
+                Region
+              </span>
+              &nbsp;
+              Attica
+            </p>
+            <p class="profile-item">
+              <span class="white radius label">
+                Country
+              </span>
+              &nbsp;
+              Greece
+            </p>
+            <p class="profile-item">
+              <span class="white radius label">
+                Venue
+              </span>
+              &nbsp;
+              National Technical University of Athens
+            </p>
+            <p class="profile-item">
+              <span class="white radius label">
+                Map Links
+              </span>
+              &nbsp;
+              <a href="link_to_osm">
+                OSM
+              </a>
+              &nbsp;
+              -
+              &nbsp;
+              <a href="link_to_gmaps">
+                G Maps
+              </a>
+            </p>
+          </div>
+          <div class="seven columns smallmap-profile-container align-right">
+            <div id="map">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Followup mashup row -->
 
 <div class="row">
-  <div class="twelve columns top-margined">
-    <img src="http://dummyimage.com/980x200/999/ccc"/>
+  <div class="twelve columns hide-on-phones">
+    <div id="flickr-mashup"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns hide-on-phones">
+    <!-- the following code needs to be appended inside #flickr-mashup using JS -->
+    <div id="tweet-mashup-container"><div id="tweet-mashup"></div></div>
+    <!-- end of appended code -->
   </div>
 </div>
 
@@ -125,45 +189,7 @@ Mozilla Reps - Sample Event
 
           https://etherpad.mozilla.org/tzkVRnfvm1 (webapps on linux) -> they are going to implement the first option (according to my irc logs) -> starts after 21/5 :(
 
-          https://docs.google.com/document/d/1rCGq9txTWE0YQnB6pMUMNns0Adn4B_Oe_hAHKr853U4/edit?hl=en_US&pli=1 - 21/6 beta, 28/8 stable
-
-          https://wiki.mozilla.org/SummerOfCode/2012/LinuxNativeWebApps
-
-          Identity on the Open Web (BrowserID) - Nikos, Giorgos - 45 mins -  workshop (15:00 - 15:45)
-
-          https://bugzilla.wikimedia.org/show_bug.cgi?id=34565
-
-          https://wiki.mozilla.org/images/c/c2/Persona_user_flow_dialog.png
-
-          https://sv.wiktionary.org/wiki/Anv%C3%A4ndare:Skalman/BrowserID
-
-          https://github.com/hsgr/browserid_mediawiki_extension
-
-          http://media.hackerspace.gr/mediawiki/index.php/Special:BrowserIDLogin
-
-          https://developer.mozilla.org/en/BrowserID/Quick_Setup
-
-          https://github.com/stomlinson/browserid_mediawiki_extension/blob/master/browserid_mediawiki.hooks.php
-
-          http://htmlpad.org/fosscomm12-identity/edit
-
-          Τι είναι το BrowserID
-
-          Παραδείγματα login
-
-          Πως λειτουργεί τεχνικά
-
-          Πως μπορείς να το βάλεις στο site σου
-
-          Η προσπάθεια ενσωμάτωσης στο wikimedia
-
-          What bug? RESOLVED FIXED! (WebDev in Mozilla) - Giorgos - 45 mins -  workshop (15:45 - 16:30)
-
-          http://pad.hackerspace.gr/p/whatbug-presentation
-
-          B2G Building and Testing Workshop -  Fredy, Pierros - 150 mins - workshop (16:00 - 18:30)
-
-          https://etherpad.mozilla.org/B2Geventtemplate</p>
+          https://docs.google.com/document/d/1rCGq9txTWE0YQnB6pMUMNns0Adn4B_Oe_hAHKr853U4/edit?hl=en_US&pli=1 - 21/6 beta, 28/8 stable</p>
       </div>
     </div>
   </div>
@@ -178,7 +204,7 @@ Mozilla Reps - Sample Event
           <div class="event-single-attendee">
             <div class="row">
               <div class="three phone-one columns grid-profile-image">
-                <img src="http://dummyimage.com/50x50/999/ccc"
+                <img src=""
                      class="profiles-people-avatar"
                      alt="avatar">
               </div>
@@ -193,7 +219,7 @@ Mozilla Reps - Sample Event
           <div class="event-single-attendee">
             <div class="row">
               <div class="three phone-one columns grid-profile-image">
-                <img src="http://dummyimage.com/50x50/999/ccc"
+                <img src=""
                      class="profiles-people-avatar"
                      alt="avatar">
               </div>
@@ -208,7 +234,7 @@ Mozilla Reps - Sample Event
           <div class="event-single-attendee">
             <div class="row">
               <div class="three phone-one columns grid-profile-image">
-                <img src="http://dummyimage.com/50x50/999/ccc"
+                <img src=""
                      class="profiles-people-avatar"
                      alt="avatar">
               </div>
@@ -223,7 +249,7 @@ Mozilla Reps - Sample Event
           <div class="event-single-attendee">
             <div class="row">
               <div class="three phone-one columns grid-profile-image">
-                <img src="http://dummyimage.com/50x50/999/ccc"
+                <img src=""
                      class="profiles-people-avatar"
                      alt="avatar">
               </div>
@@ -282,6 +308,43 @@ Mozilla Reps - Sample Event
 
 {% block bottomextra %}
   <!-- Needs to be made url -->
+  <script src="/media/js/jquery.zflickrfeed.js" type="text/javascript"></script>
+  <script src="/media/js/jquery.tweet.js" type="text/javascript"></script>
   <script src="../media/js/jquery.tooltips.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#flickr-mashup').flickrfeed('','remocamp2012', {
+        limit: 7,
+        title: false,
+        date: false,
+        header: false
+      }
+      ).append(''); //Here we need to append the div code for tweets
+      // Following does not seem to work?
+      $("a:contains('flickr.com')").attr("target", "_blank");
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function($){
+      $("#tweet-mashup").tweet({
+          query: "remocamp2012",
+          page: 1,
+          avatar_size: 32,
+          count: 20,
+          loading_text: "loading ..."
+        }).bind("loaded", function() {
+          var ul = $(this).find(".tweet_list");
+          var ticker = function() {
+            setTimeout(function() {
+              ul.find('li:first').animate( {marginTop: '-4em'}, 500, function() {
+                $(this).detach().appendTo(ul).removeAttr('style');
+              });
+              ticker();
+            }, 5000);
+          };
+          ticker();
+        });
+    });
+  </script>
 {% endblock %}
 

@@ -85,7 +85,6 @@ function initialize_mashup() {
                 return;
             }
             flickr_mashup.slideDown();
-            $('#flickr-mashup-fade').fadeIn();
 
             $('#tweet-mashup').tweet({
                 query: $('#tweet-mashup').data('hashtag'),
@@ -99,7 +98,6 @@ function initialize_mashup() {
                 // If we have tweets.
                 if (ul.find('li').length > 0) {
                     $('#tweet-mashup-container').fadeIn();
-                    $('#tweet-mashup-fade').fadeIn();
 
                     ul.find('a').attr('target', '_blank');
                     var ticker = function() {

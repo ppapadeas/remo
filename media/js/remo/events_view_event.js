@@ -85,6 +85,7 @@ function initialize_mashup() {
                 return;
             }
             flickr_mashup.slideDown();
+            $('#flickr-mashup-fade').fadeIn();
 
             $('#tweet-mashup').tweet({
                 query: $('#tweet-mashup').data('hashtag'),
@@ -103,7 +104,7 @@ function initialize_mashup() {
                     ul.find('a').attr('target', '_blank');
                     var ticker = function() {
                         setTimeout(function() {
-                            ul.find('li:first').animate( {marginTop: '-4em'}, 500, function() {
+                            ul.find('li:first').animate( {marginLeft: '-305px'}, 500, function() {
                                 $(this).detach().appendTo(ul).removeAttr('style');
                             });
                             ticker();

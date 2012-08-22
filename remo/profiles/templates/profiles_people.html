@@ -16,16 +16,7 @@
   <div class="ten columns" id="search">
     <form class="nice" id="searchform">
       <span class="pictogram-search" id="search-icon">
-        <div id="floatingCirclesG">
-          <div class="f_circleG" id="frotateG_01"></div>
-          <div class="f_circleG" id="frotateG_02"></div>
-          <div class="f_circleG" id="frotateG_03"></div>
-          <div class="f_circleG" id="frotateG_04"></div>
-          <div class="f_circleG" id="frotateG_05"></div>
-          <div class="f_circleG" id="frotateG_06"></div>
-          <div class="f_circleG" id="frotateG_07"></div>
-          <div class="f_circleG" id="frotateG_08"></div>
-        </div>
+        <div id="search-loading"></div>
       </span>
       <input type="text" placeholder="Loading..." id="searchfield"
              class="input-text big" disabled="disabled">
@@ -121,6 +112,13 @@
   </div>
 </div>
 
+<!-- Loader animation -->
+<div class="row">
+  <div class="twelve columns">
+    <div id="profiles-loading"></div>
+  </div>
+</div>
+
 {% if user.is_authenticated() %}
   <div id="profiles-reps-number" class="row">
     <div id="profiles-number-of-reps" class="twelve columns reps-number">
@@ -184,10 +182,34 @@
 {% endblock %}
 
 {% block bottomextra %}
+<!-- Following needs to be djangified :P -->
+<script src="/media/js/libs/heartcode-canvasloader-min.js"></script>
+
 {{ css('leaflet') }}
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="{{ MEDIA_URL }}/leaflet/leaflet.ie.css" />
     <![endif]-->
 {{ js('leaflet') }}
 {{ js('profiles_people') }}
+
+<!-- We should get this out of here -->
+<script>
+  // Initialize bottom loader.
+  var cl = new CanvasLoader('profiles-loading');
+  cl.setColor('#888888'); // default is '#000000'
+  cl.setDiameter(24); // default is 40
+  cl.setDensity(30); // default is 40
+  cl.setRange(0.8); // default is 1.3
+  cl.setFPS(23); // default is 24
+  cl.show(); // Hidden by default
+
+  // Initialize search loader.
+  var sl = new CanvasLoader('search-loading');
+  sl.setColor('#888888'); // default is '#000000'
+  sl.setDiameter(24); // default is 40
+  sl.setDensity(30); // default is 40
+  sl.setRange(0.8); // default is 1.3
+  sl.setFPS(23); // default is 24
+  sl.show(); // Hidden by default
+</script>
 {% endblock %}

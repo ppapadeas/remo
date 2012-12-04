@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}
+Mozilla Reps - Settings
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="ten columns">
+    <h4>Settings</h4>
+  </div>
+  <div class="two columns align-right hide-on-phones">
+    <a href="#"
+       class="small green button nice radius">
+      Save settings
+    </a>
+  </div>
+</div>
+
+<div class="dashboard-box">
+  <div class="row">
+    <div class="twelve columns">
+      <h5>Mail Preferences</h5>
+    </div>
+    <div class="twelve columns">
+      <form class="custom">
+        <label for="email-on-create-report">
+          <input type="checkbox" checked="checked"
+                 id="email-on-create-report" name="email-on-create-report">
+          <span class="custom checkbox top-margined">
+          </span>
+          Recieve email when a mentee files a new report.
+        </label>
+        <br>
+        <label for="email-on-edit-report">
+          <input type="checkbox" checked="checked"
+                 id="email-on-edit-report" name="email-on-edit-report">
+          <span class="custom checkbox">
+          </span>
+          Recieve email when a mentee edits a report.
+        </label>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="two columns align-right show-on-phones">
+    <a href="#"
+       class="small green button nice radius top-margined">
+      Save settings
+    </a>
+  </div>
+
+{% endblock %}

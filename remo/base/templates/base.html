@@ -82,6 +82,7 @@
                     <a href="{{ url('profiles_view_my_profile') }}">
                       {{ user.get_full_name()|default('user.userprofile.display_name') }}
                     </a>
+                    [<a href="{{ url('settings') }}">Settings</a>]
                     [<a href="{{ url('logout') }}">Sign out</a>]
                   {% endif %}
                 </li>

@@ -157,7 +157,10 @@ Mozilla Reps - Profile of {{ user_profile.display_name }}
       <!--End of if_events -->
     {% endif %}
   </div>
+
   <div class="six columns">
+    <!-- The following div.row should be displayed if usergroups OR featuredrep -->
+    <!-- FIX TEMPLATE LOGIC -->
     {% if usergroups %}
       <div class="row">
         <div class="one columns pictogram">
@@ -181,6 +184,11 @@ Mozilla Reps - Profile of {{ user_profile.display_name }}
                   {% if not loop.last %} and a {% endif %}
                 {% endfor %}
               {% endif %}
+          </h6>
+          <!-- Display the following(s) if featured Rep -->
+          <!-- Make dynamic! -->
+          <h6>
+            Featured Rep for <a href="#" data-reveal-id="featured-modal-1">December 2011</a>
           </h6>
         </div>
       </div>
@@ -427,5 +435,23 @@ Mozilla Reps - Profile of {{ user_profile.display_name }}
     </div>
   </div>
 {% endif %}
+
+<!-- Featured Rep text Reveal Modal -->
+<div id="featured-modal-1" class="reveal-modal">
+  <a class="close-reveal-modal">&#215;</a>
+  <p class="lead">
+    Featured for December 2011
+  </p>
+  <h2>
+    Rep Name
+  </h2>
+  <!-- Make following p Markdown to match featured rep content -->
+  <p>
+  Whether it's a localization sprint, a MozCafé, a B2G workshop or a regional Mozilla tour, you can be sure Robert "Bob" Reyes is either leading the way or heavily involved in the event one way or the other.
+  One of the first Mozillians to sign up to the Reps program in the Philippines, Bob has been doing outstanding work to educate Filipinos about Mozilla's mission and open web technologies. Just last month, he was involved in five events in different corners of the country. It's also safe to say that Bob has perfected the art of "ReMo reporting". A good illustration of this is his blog post after returning from a Moz Tour in the town of Zamboanga.
+  More recently, Bob has been planning what he calls an HTML5 & B2G roadshow in Manila's Makati district. Promises to be an exciting event!
+  Congrats Bob on being the Rep of the month for July 2012!
+  </p>
+</div>
 
 {% endblock %}

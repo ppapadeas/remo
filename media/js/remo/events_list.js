@@ -255,6 +255,16 @@ function send_query(newquery) {
 
     // Period selector.
     var period = hash_get_value('period');
+    var start_date = undefined;
+    var end_date = undefined;
+
+    if (period === 'future') {
+        start_date = new Date();
+    }
+    if (period === 'past') {
+           end_date = new Date();
+    }
+
     set_dropdown_value(EventsLib.period_selector_elm, period);
     if (period) {
         var today = new Date();
@@ -271,6 +281,29 @@ function send_query(newquery) {
         else if (period === 'all') {
             extra_q += '&limit=' + EventsLib.results_batch;
             extra_q += '&start__gt=1970-01-01';
+        }
+        else if (period === 'custom') {
+            var start_date = $( '#date-start' ).datepicker('getDate');
+            var end_date = $( '#date-end' ).datepicker('getDate');
+
+            extra_q += '&limit=0';
+
+            if (start_date) {
+                var start_utc_string = UTCDateString(start_date);
+                extra_q += '&start__gte=' + start_utc_string;
+            }
+
+            if (end_date) {
+                var end_utc_string = UTCDateString(end_date);
+                extra_q += '&end__lte=' + end_utc_string;
+            }
+        }
+
+        $( '#date-start' ).datepicker('setDate', start_date);
+        $( '#date-end' ).datepicker('setDate', end_date);
+
+        if (period === 'custom') {
+            $('#adv-search').show();
         }
     }
 
@@ -327,6 +360,23 @@ $(document).ready(function () {
         period = 'future';
         hash_set_value('period', period);
     }
+
+    // Advanced button click.
+    $('#adv-search-icon-events').click(function() {
+        var visible = $('#adv-search').is(':visible');
+        if (!visible && (period !== 'custom')) {
+            hash_set_value('period', 'custom');
+        }
+        $('#adv-search').slideToggle();
+    });
+
+    //Initiate datepicker
+    $( ".datepicker" ).datepicker({
+        onSelect: function( selectedDate ) {
+            send_query(newquery=true);
+        },
+        dateFormat: "yy-mm-dd",
+    });
 
     // Set values to fields.
     set_dropdown_value(EventsLib.period_selector_elm, period);

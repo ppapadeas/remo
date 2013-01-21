@@ -328,6 +328,14 @@ $(document).ready(function () {
         hash_set_value('period', period);
     }
 
+    // Advanced button click.
+    $('#adv-search-icon-events').click(function() {
+        $('#adv-search').slideToggle();
+    });
+
+    //Initiate Datepicker
+    $( ".datepicker" ).datepicker({ dateFormat: "yy-mm-dd" });
+
     // Set values to fields.
     set_dropdown_value(EventsLib.period_selector_elm, period);
 

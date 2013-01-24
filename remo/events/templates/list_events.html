@@ -60,25 +60,25 @@ Mozilla Reps - Events
     <div class="row">
       <form class="custom" id="searchform">
         <div class="three columns">
+          <input type="text" class="datepicker input-text big" id="date-start" placeholder="Start Range Date"/>
+        </div>
+        <div class="three pull-six columns">
+          <input type="text" class="datepicker input-text big" id="date-end" placeholder="End Range Date"/>
+        </div>
+        <!--<div class="three columns align-center">
+          {% if user.is_authenticated() %}
+            <button id="icalendar-export-button"
+                    class="small white button nice radius">iCalendar Export</button>
+          {% endif %}
+        </div>
+        <div class="three columns">
           <select id="adv-search-category" class="expand">
             <option value="">All Categories</option>
             <option value="rep">Developer Evangelism</option>
             <option value="mentor">Support</option>
             <option value="council">Marketing</option>
           </select>
-        </div>
-        <div class="three columns">
-          <input type="text" class="datepicker input-text big" id="date-start" placeholder="Start Range Date"/>
-        </div>
-        <div class="three columns">
-          <input type="text" class="datepicker input-text big" id="date-end" placeholder="End Range Date"/>
-        </div>
-        <div class="three columns align-center">
-          {% if user.is_authenticated() %}
-            <button id="icalendar-export-button"
-                    class="small white button nice radius">iCalendar Export</button>
-          {% endif %}
-        </div>
+        </div> -->
       </form>
     </div>
   </div>

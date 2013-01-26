@@ -191,6 +191,12 @@ def invite(request):
     """Invite a user."""
     if request.POST:
         form = forms.InviteUserForm(request.POST)
+        email = form['email'].value()
+        try:
+            user = User.objects.get(email=email)
+            user.delete()
+        except User.DoesNotExist:
+            pass
 
         if form.is_valid():
             email = form.cleaned_data['email']

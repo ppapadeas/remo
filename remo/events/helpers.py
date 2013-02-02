@@ -5,6 +5,8 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 from jingo import register
 
+from remo.events.models import Event
+
 
 @register.filter
 def get_event_converted_visitor_callback_url(obj):
@@ -88,3 +90,18 @@ def is_past_event(event):
 
     now = timezone.make_aware(datetime.now(), pytz.UTC)
     return now > event.end
+
+
+@register.function
+def get_reps_events(users, is_past):
+    """Returns the events of the users."""
+    events = []
+    now = timezone.make_aware(datetime.now(), pytz.UTC)
+    for user in users:
+        if is_past:
+            events += (Event.objects.filter(owner=user,
+                                            start__lt=now).distinct()[:50])
+        else:
+            events += Event.objects.filter(owner=user, start__gt=now)
+
+    return events

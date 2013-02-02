@@ -69,6 +69,10 @@ MINIFY_BUNDLES = {
             'js/libs/stupidtable.js',
             'js/remo/dashboard.js'
             ),
+        'base_dashboard_mozillians': (
+            'js/libs/stupidtable.js',
+            'js/remo/dashboard_mozillians.js'
+            ),
         'profiles_view_report': (
             'js/remo/profiles_view_report.js',
             ),
@@ -205,4 +209,4 @@ BROWSERID_CREATE_USER = False
 REPS_MENTORS_LIST = 'reps-mentors@lists.mozilla.org'
 
 # Mozillians API
-MOZILLIANS_API_BASE = 'https://mozillians.org'
+MOZILLIANS_API_BASE = 'https://mozillians-dev.allizom.org'

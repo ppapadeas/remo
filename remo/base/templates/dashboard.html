@@ -3,15 +3,26 @@
 
 {% block content %}
 <div class="row">
-  <div class="twelve columns">
+  <div class="ten columns">
     <h4>Dashboard</h4>
   </div>
+  {% if user_is_mozillian(user) %}
+    <div class="two columns align-right">
+      <a href="#" class="small white button nice radius"
+         data-reveal-id="interests-modal">Edit interests</a>
+      {% if interestform.errors %}
+        <small class="error top-margined">
+          Please Mark your interests
+        </small>
+      {% endif %}
+    </div>
+  {% endif %}
 </div>
 
 <div class="row">
   <div class="twelve columns">
     {% if user_is_mozillian(user) %}
-      <p>Dashboard for Mozillians! Hooray!</p>
+      {% include "dashboard_mozillians.html" %}
     {% else %}
       {% if monthly_reports is defined or
             mentees_reports_list is defined or
@@ -975,33 +986,98 @@
   </div>
 </div>
 
-<!-- Mail my mentees Reveal Modal -->
-{% if mentees_emails is not none %}
-  <div id="mail-modal" class="reveal-modal">
-    <a class="close-reveal-modal">&#215;</a>
-    <p class="lead">Mail your mentees</p>
-    <form id="email-mentees-form" method="post"
-          action="{{ url('email_mentees') }}" class="custom">
-      {{ csrf() }}
-      {% for field in email_mentees_form %}
-        {{field}} {{ field.label }}
-        <br>
-      {% endfor %}
+{% if not user_is_mozillian(user) %}
+  <!-- Mail my mentees Reveal Modal -->
+  {% if mentees_emails is not none %}
+    <div id="mail-modal" class="reveal-modal">
+      <a class="close-reveal-modal">&#215;</a>
+      <p class="lead">Mail your mentees</p>
+      <form id="email-mentees-form" method="post"
+            action="{{ url('email_mentees') }}" class="custom">
+        {{ csrf() }}
+        {% for field in email_mentees_form %}
+          {{field}} {{ field.label }}
+          <br>
+        {% endfor %}
 
-      <div class="row">
-        <div id="send-mail" class="twelve columns align-right">
-          <button type="submit" class="medium blue button nice radius">
-            Send email
-          </button>
+        <div class="row">
+          <div id="send-mail" class="twelve columns align-right">
+            <button type="submit" class="medium blue button nice radius">
+              Send email
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
-  </div>
-{% endif %}
-<!-- Mail my mentees Reveal Modal End -->
+      </form>
+    </div>
+  {% endif %}
+  <!-- Mail my mentees Reveal Modal End -->
+{% else %}
+  <!-- mail reps reveal modal -->
+  {% if mentees_emails is not none %}
+    <div id="mail-reps-modal" class="reveal-modal">
+      <a class="close-reveal-modal">&#215;</a>
+      <p class="lead">mail reps</p>
+      <form id="email-mentees-form" method="post"
+            action="{{ url('email_mentees') }}" class="custom">
+        {{ csrf() }}
+        {% for field in email_mentees_form %}
+          {{field}} {{ field.label }}
+          <br>
+        {% endfor %}
 
+        <div class="row">
+          <div id="send-mail" class="twelve columns align-right">
+            <button type="submit" class="medium blue button nice radius">
+              send email
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+  <!-- mail reps reveal modal end -->
+
+
+  <!-- interests modal -->
+  <form class="custom" method="post"
+        action="{{ url('mozillians_interests') }}">
+    {{ csrf() }}
+    <div id="interests-modal" class="reveal-modal">
+      <a class="close-reveal-modal">&#215;</a>
+      <p class="lead">
+        Specify your interests in Functional areas you want to track
+      </p>
+      <h3>
+        Functional Areas
+      </h3>
+      <ul class="block-grid three-up">
+        {% for choice in interestform.tracked_functional_areas.field.choices %}
+          <li>
+          <label for="{{ choice.1 }}-bit">
+            <input type="checkbox" name="tracked_functional_areas"
+                   value="{{ choice.0 }}"
+              {% if choice.0 in interestform.tracked_functional_areas.value() %}
+                checked="checked"
+              {% endif %}/>
+            {{ choice.1 }}
+          </li>
+        {% endfor %}
+      </ul>
+      <button type="submit"
+              class="small green button nice radius close-reveal-modal">
+        choose these areas &raquo;
+      </button>
+      </a>
+    </div>
+  </form>
+  <!-- interests modal end -->
+{% endif %}
 {% endblock %}
 
 {% block bottomextra %}
-  {{ js('base_dashboard') }}
+  {% if user_is_mozillian(user) %}
+    {{ js('base_dashboard_mozillians') }}
+  {% else %}
+    {{ js('base_dashboard') }}
+  {% endif %}
 {% endblock %}

@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from jingo import register
 
 from remo.base.utils import number2month
+from remo.reports.models import Report
 
 
 @register.filter
@@ -40,3 +41,13 @@ def get_comment_delete_url(obj):
 def get_mentees(user):
     return [mentee_profile.user for mentee_profile in
             user.mentees.order_by('user__last_name', 'user__first_name')]
+
+
+@register.function
+def get_reps_reports(users):
+    """Returns the reports of users."""
+    reports = []
+    for user in users:
+        reports += (Report.objects.filter(user=user).
+                    order_by('-created_on').distinct()[:20])
+    return reports

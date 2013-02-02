@@ -1,10 +1,9 @@
+# From Mozillians
+# https://github.com/mozilla/mozillians/blob/master/apps/common/browserid_mock.py
 from django.conf import settings
 from django.utils.functional import wraps
 
 from mock import patch
-
-# From Mozillians
-# https://github.com/mozilla/mozillians/blob/master/apps/common/browserid_mock.py
 
 
 class mock_browserid(object):

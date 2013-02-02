@@ -155,7 +155,7 @@ def view_profile(request, display_name):
 
     today = date.today()
     if ((request.user.is_authenticated() and
-        user in request.user.mentees.all()) or
+         user in request.user.mentees.all()) or
         user == request.user):
         reports = get_reports_for_year(
             user, start_year=2011, end_year=today.year,

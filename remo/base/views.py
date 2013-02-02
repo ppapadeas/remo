@@ -53,19 +53,14 @@ def mozilla_browserid_verify(request):
                             username=USERNAME_ALGO(data['email']),
                             email=data['email'])
 
-                        if ' ' in data['full_name']:
-                            first_name, last_name = (
-                                data['full_name'].split(' ', 1))
-                        else:
-                            first_name = data['full_name']
-                            last_name = ''
+                        first_name, last_name = (
+                            data['full_name'].split(' ', 1)
+                            if ' ' in data['full_name']
+                            else ('', data['full_name']))
                         user.first_name = first_name
                         user.last_name = last_name
                         user.save()
-
                         user.groups.add(Group.objects.get(name='Mozillians'))
-                        user.userprofile.display_name = data['full_name']
-                        user.userprofile.save()
 
             if _is_valid_login:
                 user = auth.authenticate(assertion=assertion,
@@ -90,10 +85,43 @@ def main(request):
 
 
 @never_cache
+@permission_check(group='Mozillians')
+def dashboard_mozillians(request):
+    """Edit mozillians interests."""
+    user = request.user
+    args = {}
+    if request.method == 'POST':
+        interest_form = forms.TrackFunctionalAreasForm(
+            request.POST, instance=user.userprofile)
+        if interest_form.is_valid():
+            interest_form.save()
+            messages.success(request, 'Interests successfully saved')
+            return redirect('dashboard')
+    else:
+        args['interestform'] = forms.TrackFunctionalAreasForm(
+            instance=user.userprofile)
+        # Get the reps who match the specified interests
+        interests = user.userprofile.tracked_functional_areas.all()
+        tracked_interests = {}
+        for interest in interests:
+            tracked_interests[interest] = User.objects.filter(
+                userprofile__functional_areas__name=interest)
+        ordered_keys = sorted(tracked_interests.keys())
+        args['ordered_keys'] = ordered_keys
+        args['tracked_interests'] = tracked_interests
+
+    return render(request, 'dashboard.html', args)
+
+
+@never_cache
 @permission_check()
 def dashboard(request):
     """Dashboard view."""
     user = request.user
+
+    if user.groups.filter(name='Mozillians').exists():
+        return dashboard_mozillians(request)
+
     args = {}
     q_closed = Q(status='RESOLVED') | Q(status='VERIFIED')
     budget_requests = (Bug.objects.filter(component='Budget Requests').

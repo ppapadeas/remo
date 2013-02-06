@@ -29,6 +29,13 @@ Mozilla Reps - Events
   </div>
 </div>
 
+<div class="row">
+  <div class="twelve columns">
+    <div id="event-timeline">
+    </div>
+  </div>
+</div>
+
 <!-- Search box -->
 <div class="row">
   <form class="custom" id="events-searchform">
@@ -141,6 +148,7 @@ Mozilla Reps - Events
 
 {% block bottomextra %}
 {{ css('leaflet') }}
+{{ css('storyjs-css') }}
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="{{ MEDIA_URL }}/leaflet/leaflet.ie.css" />
     <![endif]-->

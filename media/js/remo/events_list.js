@@ -81,6 +81,50 @@ function add_pointers() {
     });
 }
 
+function dateFormat(date) {
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    return year + "," + month + "," + day;
+}
+
+function initialize_timeline(events) {
+    var event_timeline = new Object();
+    var timeline = new Object();
+    timeline.headline = "Events";
+    timeline.type = "default";
+
+    dates = new Array();
+    events.objects.forEach(function(item) {
+	var start = Date.parse(item.start);
+	var date_start = new Date(start);
+	var end  = Date.parse(item.end);
+	var date_end = new Date(end);
+
+	elm = new Object();
+	elm.startDate = dateFormat(date_start);
+	elm.endDate = dateFormat(date_end);
+	elm.headline = item.name;
+
+	dates.push(elm);
+    });
+
+    timeline.date = dates;
+    event_timeline.timeline = timeline;
+    
+    $("#event-timeline").empty();
+    
+    createStoryJS({
+	type:		'timeline',
+	width:		'980',
+	height:		'300',
+	source:		event_timeline,
+	embed_id:	'event-timeline',
+	debug:		true,
+	start_zoom_adjust: '5',
+    });
+};
+
 function bind_events() {
     // Bind events
     // Update hash, on search input update.
@@ -156,6 +200,8 @@ var update_results = function(data, query, newquery, past_events) {
         return;
     }
 
+    initialize_timeline(data);
+
     EventsLib.search_loading_icon_elm.hide();
     EventsLib.search_ready_icon_elm.show();
     EventsLib.events_loading_wrapper_elm.hide();
@@ -229,7 +275,7 @@ function UTCDateString(d){
 
 function send_query(newquery) {
     var past_events = true;
-    var extra_q = '';
+    var extra_q = ''
     var value = EventsLib.location_elm.attr('hash').substring(2);
 
     if (newquery) {

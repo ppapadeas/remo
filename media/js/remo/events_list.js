@@ -96,32 +96,33 @@ function initialize_timeline(events) {
 
     dates = new Array();
     events.objects.forEach(function(item) {
-	var start = Date.parse(item.start);
-	var date_start = new Date(start);
-	var end  = Date.parse(item.end);
-	var date_end = new Date(end);
+        var start = Date.parse(item.start);
+        var date_start = new Date(start);
+        var end  = Date.parse(item.end);
+        var date_end = new Date(end);
 
-	elm = new Object();
-	elm.startDate = dateFormat(date_start);
-	elm.endDate = dateFormat(date_end);
-	elm.headline = item.name;
+        elm = new Object();
+        elm.startDate = dateFormat(date_start);
+        elm.endDate = dateFormat(date_end);
+        elm.headline = item.name;
 
-	dates.push(elm);
+        dates.push(elm);
     });
 
     timeline.date = dates;
     event_timeline.timeline = timeline;
     
     $("#event-timeline").empty();
+    EventsLib.map_overlay_elm.appendTo('#event-timeline');
     
     createStoryJS({
-	type:		'timeline',
-	width:		'980',
-	height:		'300',
-	source:		event_timeline,
-	embed_id:	'event-timeline',
-	debug:		true,
-	start_zoom_adjust: '5',
+        type:       'timeline',
+        width:      '980',
+        height:     '300',
+        source:     event_timeline,
+        embed_id:   'event-timeline',
+        debug:      true,
+        start_zoom_adjust: '5',
     });
 };
 
@@ -275,7 +276,7 @@ function UTCDateString(d){
 
 function send_query(newquery) {
     var past_events = true;
-    var extra_q = ''
+    var extra_q = '';
     var value = EventsLib.location_elm.attr('hash').substring(2);
 
     if (newquery) {
@@ -398,5 +399,25 @@ $(document).ready(function () {
              $(document).height() - EventsLib.window_elm.height() - EventsLib.window_offset) {
             send_query(newquery=false);
         }
+    });
+});
+
+$(document).ready(function () {
+    $("#event-timeline").hide();
+
+    $('#events-map-button').click(function () {
+        $('#event-timeline').fadeOut('fast');
+        $('#map').fadeIn('slow');
+
+        $(this).parent().addClass('active');
+        $('#events-timeline-button').parent().removeClass('active');
+    });
+
+    $('#events-timeline-button').click(function () {
+        $('#map').fadeOut('fast');
+        $('#event-timeline').fadeIn('slow');
+
+        $(this).parent().addClass('active');
+        $('#events-map-button').parent().removeClass('active');
     });
 });

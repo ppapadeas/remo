@@ -13,6 +13,7 @@ EventsLib.search_loading_icon_elm = $('#search-loading-icon');
 EventsLib.search_ready_icon_elm = $('#search-ready-icon');
 EventsLib.events_loading_wrapper_elm = $('#events-loading-wrapper');
 EventsLib.map_overlay_elm = $('#map-overlay');
+EventsLib.timeline_overlay_elm = $('#timeline-overlay');
 EventsLib.window_elm = $(window);
 EventsLib.location_elm = $(location);
 EventsLib.trigger_timeout = undefined;
@@ -88,43 +89,62 @@ function dateFormat(date) {
     return year + "," + month + "," + day;
 }
 
-function initialize_timeline(events) {
-    var event_timeline = new Object();
-    var timeline = new Object();
+function initialize_timeline(events, enable) {
+
+    var event_timeline = {};
+    var timeline = {};
     timeline.headline = "Events";
     timeline.type = "default";
 
-    dates = new Array();
-    events.objects.forEach(function(item) {
-        var start = Date.parse(item.start);
-        var date_start = new Date(start);
-        var end  = Date.parse(item.end);
-        var date_end = new Date(end);
+    if (enable && events.objects.length > 0) {
+        dates = [];
+        events.objects.forEach(function(item) {
+                                   var start = Date.parse(item.start);
+                                   var date_start = new Date(start);
+                                   var end  = Date.parse(item.end);
+                                   var date_end = new Date(end);
 
-        elm = new Object();
-        elm.startDate = dateFormat(date_start);
-        elm.endDate = dateFormat(date_end);
-        elm.headline = item.name;
+                                   elm = {};
+                                   elm.startDate = dateFormat(date_start);
+                                   elm.endDate = dateFormat(date_end);
+                                   elm.headline = item.name;
 
-        dates.push(elm);
-    });
+                                   dates.push(elm);
+                               });
 
-    timeline.date = dates;
-    event_timeline.timeline = timeline;
-    
-    $("#event-timeline").empty();
-    EventsLib.map_overlay_elm.appendTo('#event-timeline');
-    
-    createStoryJS({
-        type:       'timeline',
-        width:      '980',
-        height:     '300',
-        source:     event_timeline,
-        embed_id:   'event-timeline',
-        debug:      true,
-        start_zoom_adjust: '5',
-    });
-};
+        timeline.date = dates;
+        event_timeline.timeline = timeline;
+
+        $("#event-timeline").empty();
+        EventsLib.timeline_overlay_elm.appendTo('#event-timeline');
+        EventsLib.timeline_overlay_elm.hide();
+        createStoryJS({
+                          type:       'timeline',
+                          width:      '980',
+                          height:     '300',
+                          source:     event_timeline,
+                          embed_id:   'event-timeline',
+                          debug:      true
+                      });
+    }
+    else {
+
+        timeline.date = [];
+        event_timeline.timeline = timeline;
+
+        $("#event-timeline").empty();
+        EventsLib.timeline_overlay_elm.appendTo('#event-timeline');
+        EventsLib.timeline_overlay_elm.show();
+        createStoryJS({
+                          type:       'timeline',
+                          width:      '980',
+                          height:     '300',
+                          source:     event_timeline,
+                          embed_id:   'event-timeline',
+                          debug:      true
+                      });
+    }
+}
 
 function bind_events() {
     // Bind events
@@ -201,7 +221,6 @@ var update_results = function(data, query, newquery, past_events) {
         return;
     }
 
-    initialize_timeline(data);
 
     EventsLib.search_loading_icon_elm.hide();
     EventsLib.search_ready_icon_elm.show();
@@ -257,6 +276,11 @@ var update_results = function(data, query, newquery, past_events) {
     }).appendTo('#events-table-body');
 
     EventsLib.searchfield_elm.data('searching', undefined);
+
+    var period = hash_get_value('period');
+    var enable = (parseInt(data.meta.total_count, 10)<100 && period == 'future');
+
+    initialize_timeline(data, enable);
 
     if (past_events && parseInt(data.meta.total_count, 10) > EventsLib.results_batch) {
         EventsLib.map_overlay_elm.show();

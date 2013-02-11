@@ -25,7 +25,7 @@
       {% else %}
         <li id="{{ key }}Tab">
       {% endif %}
-          <!-- people block -->
+      <!-- people block -->
       <div class="dashboard-box">
         <div class="row">
           <div class="seven columns">
@@ -35,12 +35,12 @@
             <dl class="sub-nav dashboard-filter">
               <dt>Filter:</dt>
               <dd class="active">
-                <a id="dashboard-mozillians-reps-grid-button" href="javascript:void(0)">
+                <a class="dashboard-mozillians-reps-grid-button" href="javascript:void(0)">
                    Reps grid
                 </a>
               </dd>
               <dd>
-                <a id="dashboard-mozillians-reps-reports-button" href="javascript:void(0)">
+                <a class="dashboard-mozillians-reps-reports-button" href="javascript:void(0)">
                    Reps reports
                 </a>
               </dd>
@@ -50,7 +50,7 @@
 
         <div class="row">
           <!-- people grid block -->
-          <div id="dashboard-mozillians-reps-grid-block">
+          <div class="dashboard-mozillians-reps-grid-block">
             {% if tracked_interests[key]|length > 0 %}
               <ul class="block-grid four-up">
                 {% for rep in tracked_interests[key] %}
@@ -80,8 +80,8 @@
           </div>
           <!-- end people grid block -->
 
-            <!-- reports list block -->
-          <div id="dashboard-mozillians-reps-reports-block" class="hidden">
+          <!-- reports list block -->
+          <div class="dashboard-mozillians-reps-reports-block hidden">
             {% if tracked_interests[key]|length > 0 %}
               <table class="dashboard-table">
                 <thead>
@@ -143,12 +143,12 @@
             <dl class="sub-nav dashboard-filter">
               <dt>Filter:</dt>
                 <dd class="active">
-                  <a id="dashboard-events-future-button" href="javascript:void(0)">
+                  <a class="dashboard-events-future-button" href="javascript:void(0)">
                     Current & Future events
                   </a>
                 </dd>
                 <dd>
-                  <a id="dashboard-events-past-button" href="javascript:void(0)">
+                  <a class="dashboard-events-past-button" href="javascript:void(0)">
                     Past events
                   </a>
                 </dd>
@@ -159,7 +159,7 @@
         <div class="row">
           {% if tracked_interests[key]|length > 0 %}
             <!-- Current and future events block -->
-            <div id="dashboard-events-future-block">
+            <div class="dashboard-events-future-block">
               <table class="dashboard-table">
                 <thead>
                   <tr>
@@ -199,7 +199,7 @@
             <!-- end Current and future events block -->
 
             <!-- Past events block-->
-            <div id="dashboard-events-past-block" class="hidden">
+            <div class="dashboard-events-past-block hidden">
               <table class="dashboard-table">
                 <thead>
                   <tr>
@@ -237,17 +237,18 @@
                 </tbody>
               </table>
             </div>
-            {% else %}
-              <div class="row">
-                <div class="twelve columns no-bugs">
-                  <p>No events found for the specified interest!</p>
-                </div>
+          {% else %}
+            <div class="row">
+              <div class="twelve columns no-bugs">
+                <p>No events found for the specified interest!</p>
               </div>
-            {% endif %}
-            <!-- end Past events block -->
+            </div>
+          {% endif %}
+          <!-- end Past events block -->
         </div>
       <!-- end events block -->
-      </li>
+      </div>
+    </li>
     {% endfor %}
   </ul>
 {% endif %}

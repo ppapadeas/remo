@@ -1,34 +1,34 @@
 $(document).ready(function () {
-    $('#dashboard-mozillians-reps-grid-button').click(function () {
-        $('#dashboard-mozillians-reps-grid-block').show('fast');
-        $('#dashboard-mozillians-reps-reports-block').hide('fast');
+    $('.dashboard-mozillians-reps-grid-button').click(function () {
+        $('.dashboard-mozillians-reps-grid-block').removeClass('hidden');
+        $('.dashboard-mozillians-reps-reports-block').addClass('hidden');
 
-        $(this).parent().addClass('active');
-        $('#dashboard-mozillians-reps-reports-button').parent().removeClass('active');
+        $('.dashboard-mozillians-reps-grid-button').parent().addClass('active');
+        $('.dashboard-mozillians-reps-grid-button').parent().siblings().removeClass('active');
     });
 
-    $('#dashboard-mozillians-reps-reports-button').click(function () {
-        $('#dashboard-mozillians-reps-reports-block').show('fast');
-        $('#dashboard-mozillians-reps-grid-block').hide('fast');
+    $('.dashboard-mozillians-reps-reports-button').click(function () {
+        $('.dashboard-mozillians-reps-reports-block').removeClass('hidden');
+        $('.dashboard-mozillians-reps-grid-block').addClass('hidden');
 
-        $(this).parent().addClass('active');
-        $('#dashboard-mozillians-reps-grid-button').parent().removeClass('active');
+        $('.dashboard-mozillians-reps-reports-button').parent().addClass('active');
+        $('.dashboard-mozillians-reps-reports-button').parent().siblings().removeClass('active');
     });
 
-    $('#dashboard-events-future-button').click(function () {
-        $('#dashboard-events-future-block').show('fast');
-        $('#dashboard-events-past-block').hide('fast');
+    $('.dashboard-events-future-button').click(function () {
+        $('.dashboard-events-future-block').show('fast');
+        $('.dashboard-events-past-block').hide('fast');
 
-        $(this).parent().addClass('active');
-        $('#dashboard-events-past-button').parent().removeClass('active');
+        $('.dashboard-events-future-button').parent().addClass('active');
+        $('.dashboard-events-future-button').parent().siblings().removeClass('active');
     });
 
-    $('#dashboard-events-past-button').click(function () {
-        $('#dashboard-events-past-block').show('fast');
-        $('#dashboard-events-future-block').hide('fast');
+    $('.dashboard-events-past-button').click(function () {
+        $('.dashboard-events-past-block').show('fast');
+        $('.dashboard-events-future-block').hide('fast');
 
-        $(this).parent().addClass('active');
-        $('#dashboard-events-future-button').parent().removeClass('active');
+        $('.dashboard-events-past-button').parent().addClass('active');
+        $('.dashboard-events-past-button').parent().siblings().removeClass('active');
     });
 
 

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block pagetitle %}Mozilla Reps - Voting{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="ten columns">
+    <h4>Voting</h4>
+  </div>
+  <div class="two columns align-right">
+    <a href="#" target="_blank"
+         class="small blue button nice radius">Create vote</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+
+    <!-- Past votes block -->
+    <div class="dashboard-box">
+      <div class="row">
+        <div class="twelve columns">
+          <h5>Past Votes</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="dashboard-table">
+          <thead>
+            <tr>
+              <th class="dashboard-clickable type-string">Name</th>
+              <th class="dashboard-clickable type-string">Start Date</th>
+              <th class="dashboard-clickable type-string">End Date</th>
+              <th class="dashboard-clickable type-string">Eligible Groups</th>
+              <th class="dashboard-clickable type-string align-center">Voted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="#">
+                  Vote name 1
+                </a>
+              </td>
+              <td>2012-03-02 13:00 UTC</td>
+              <td>2012-06-02 13:00 UTC</td>
+              <td>Mentors</td>
+              <td class="align-center">23</td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#">
+                  Vote name 4
+                </a>
+              </td>
+              <td>2012-03-02 13:00 UTC</td>
+              <td>2012-06-02 13:00 UTC</td>
+              <td>Reps, Mentors</td>
+              <td class="align-center">23</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- end Past votes block -->
+
+    <!-- Current votes block -->
+    <div class="dashboard-box">
+      <div class="row">
+        <div class="twelve columns">
+          <h5>Current Votes</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="dashboard-table">
+          <thead>
+            <tr>
+              <th class="dashboard-clickable type-string">Name</th>
+              <th class="dashboard-clickable type-string">Start Date</th>
+              <th class="dashboard-clickable type-string">End Date</th>
+              <th class="dashboard-clickable type-string">Eligible Groups</th>
+              <th class="dashboard-clickable type-string align-center">Voted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="#">
+                  Vote name 2
+                </a>
+              </td>
+              <td>2012-03-02 13:00 UTC</td>
+              <td>2012-06-02 13:00 UTC</td>
+              <td>Reps</td>
+              <td class="align-center">123</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- end Current votes block -->
+
+    <!-- Future votes block -->
+    <div class="dashboard-box">
+      <div class="row">
+        <div class="twelve columns">
+          <h5>Future Votes</h5>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="dashboard-table">
+          <thead>
+            <tr>
+              <th class="dashboard-clickable type-string">Name</th>
+              <th class="dashboard-clickable type-string">Start Date</th>
+              <th class="dashboard-clickable type-string">End Date</th>
+              <th class="dashboard-clickable type-string">Eligible Groups</th>
+              <th class="dashboard-clickable type-string align-center">Voted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="#">
+                  Vote name 3
+                </a>
+              </td>
+              <td>2012-03-02 13:00 UTC</td>
+              <td>2012-06-02 13:00 UTC</td>
+              <td>Council</td>
+              <td class="align-center">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- end Future votes block -->
+
+  </div>
+</div>
+{% endblock %}
+
+{% block bottomextra %}
+  {{ js('voting_list') }}
+{% endblock %}

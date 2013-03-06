@@ -83,7 +83,19 @@ class Event(models.Model):
         ordering = ['start']
         permissions = (('can_subscribe_to_events', 'Can subscribe to events'),
                        ('can_edit_events', 'Can edit events'),
-                       ('can_delete_events', 'Can delete events'))
+                       ('can_delete_events', 'Can delete events'),
+                       ('can_delete_event_comments', 'Can delete event comments'))
+
+
+class EventComment(models.Model):
+    """Comments in Event."""
+    user = models.ForeignKey(User)
+    event = models.ForeignKey(Event)
+    created_on = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField()
+
+    class Meta:
+        ordering = ['id']
 
 
 class Metric(models.Model):
@@ -121,6 +133,8 @@ def event_set_groups(app, sender, signal, **kwargs):
 
     perms = {'can_edit_events': ['Admin', 'Council', 'Mentor', 'Rep'],
              'can_delete_events': ['Admin', 'Council', 'Mentor'],
-             'can_subscribe_to_events': ['Admin', 'Council', 'Mentor', 'Rep']}
+             'can_delete_event_comments': ['Admin'],
+             'can_subscribe_to_events': ['Admin', 'Council', 'Mentor', 'Rep',
+                                         'Mozillians']}
 
     add_permissions_to_groups('events', perms)

@@ -335,7 +335,30 @@ class ViewsTest(TestCase):
 
         eq_(m.tags, u'success')
         eq_(len(mail.outbox), 1)
-        
+
         email = mail.outbox[0]
         eq_(len(email.to), 2)
         eq_(len(email.cc), 1)
+
+    def test_post_comment_on_event(self):
+        """Test post comment on event."""
+        c = Client()
+        comment = 'This is a new comment'
+        # Test anonymous user
+        event_view_url = reverse('events_view_event',
+                                 kwargs={'slug': 'test-event'})
+        response = c.post(event_view_url, {'comment': comment}, follow=True)
+        self.assertTemplateUsed(response, 'main.html')
+        for m in response.context['messages']:
+            pass
+        eq_(m.tags, u'error')
+
+        # Test authenticated user
+        c.login(username='rep3', password='passwd')
+
+        response = c.post(event_view_url, {'comment': comment}, follow=True)
+        self.assertTemplateUsed(response, 'view_event.html')
+        for m in response.context['messages']:
+            pass
+        eq_(m.tags, u'success')
+        eq_(response.context['request'].POST['comment'], comment)

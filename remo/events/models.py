@@ -13,6 +13,7 @@ from uuslug import uuslug as slugify
 
 from remo.base.utils import add_permissions_to_groups
 from remo.remozilla.models import Bug
+from remo.reports.tasks import send_remo_mail
 
 
 class Attendance(models.Model):
@@ -138,3 +139,19 @@ def event_set_groups(app, sender, signal, **kwargs):
                                          'Mozillians']}
 
     add_permissions_to_groups('events', perms)
+
+
+@receiver(post_save, sender=EventComment,
+          dispatch_uid='email_event_owner_on_add_comment_signal')
+def email_event_owner_on_add_comment(sender, instance, **kwargs):
+    """Email event owner when a comment is added to event."""
+    subject = '[Event] User %s commented on event "%s"'
+    email_template = 'emails/owner_notification_on_add_comment.txt'
+    event = instance.event
+    owner = instance.event.owner
+    ctx_data = {'event': event, 'owner': owner, 'user': instance.user,
+                'comment': instance.comment}
+    if owner.userprofile.receive_email_on_add_comment:
+        subject = subject % (instance.user.get_full_name(),
+                             instance.event.name)
+        send_remo_mail.delay([owner], subject, email_template, ctx_data)

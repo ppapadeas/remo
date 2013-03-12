@@ -889,7 +889,9 @@ ul.mreports li.editable a {
     .top-margined;
 }
 
-.report-item textarea, select, p, .event-item {
+.report-item textarea, .report-item select,
+.report-item p, .event-item select,
+.event-item textarea, .event-item p {
     margin-top: 20px !important;
 }
 
@@ -908,7 +910,7 @@ ul.mreports li.editable a {
     cursor: pointer;
 }
 
-.report-delete-comment:hover {
+.report-delete-comment:hover, .event-delete-comment:hover {
     .grayed;
 }
 

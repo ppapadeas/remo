@@ -14,6 +14,12 @@ Mozilla Reps - {{ event.name }}
        class="small white button nice radius">
       iCalendar
     </a>
+    <!-- need to check for permission to create event -->
+    <a href="#"
+       class="small white button nice radius">
+      Clone
+    </a>
+    <!-- end of clone -->
     {% if perms.events.can_edit_events %}
       <a href="{{ url('events_edit_event', slug=event.slug) }}"
          class="small white button nice radius">
@@ -502,6 +508,12 @@ Mozilla Reps - {{ event.name }}
      class="small white button nice radius">
     iCalendar
   </a>
+  <!-- need to check for permission to create event -->
+    <a href="#"
+       class="top-margined small white button nice radius">
+      Clone
+    </a>
+  <!-- end of clone -->
   {% if perms.events.can_edit_events %}
     <a href="{{ url('events_edit_event', slug=event.slug) }}"
        class="top-margined small white button nice radius">

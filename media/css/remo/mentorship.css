@@ -1,0 +1,35 @@
+.node circle {
+  fill: #fff;
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+.leaf circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node, .leaf {
+    font: 8px sans-serif;
+}
+
+.node text, .leaf text {
+    fill: #aaa !important;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1px;
+}
+
+.focus text{
+    fill: #222 !important;
+    font: 12px sans-serif;
+    font-weight: bold;
+}
+
+.path {
+    stroke: steelblue;
+}

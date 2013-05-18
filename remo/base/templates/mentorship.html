@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}
+Mozilla Reps - Labs - Mentorship
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="twelve columns">
+    <h4>Mentorship Structure</h4>
+  </div>
+</div>
+
+<!-- Loader animation -->
+<div class="row" id="profiles-loading-wrapper">
+  <div class="twelve columns">
+    <div id="profiles-loading"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <div id="mentorship-visualization-container"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block bottomextra %}
+{{ css('mentorship-diagram-css') }}
+{{ js('mentorship_diagram') }}
+{% endblock %}

@@ -25,7 +25,7 @@ MINIFY_BUNDLES = {
             'css/timeline/timeline.css',
             ),
         'mentorship-diagram-css': (
-            'css/remo/mentorship.css',
+            'css/remo/mentorship.less',
             ),
     },
     'js': {

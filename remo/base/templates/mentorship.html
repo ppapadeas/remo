@@ -4,8 +4,11 @@
 Mozilla Reps - Labs - Mentorship
 {% endblock %}
 
-{% block content %}
+{% block headextra %}
+{{ css('mentorship-diagram-css') }}
+{% endblock %}
 
+{% block content %}
 <div class="row">
   <div class="twelve columns">
     <h4>Mentorship Structure</h4>
@@ -27,6 +30,5 @@ Mozilla Reps - Labs - Mentorship
 {% endblock %}
 
 {% block bottomextra %}
-{{ css('mentorship-diagram-css') }}
 {{ js('mentorship_diagram') }}
 {% endblock %}

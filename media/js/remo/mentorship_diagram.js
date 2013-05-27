@@ -109,7 +109,7 @@ function create_diagram(obj) {
 }
 
 function loader_canvas_icon_init() {
-    var sl = new CanvasLoader('profiles-loading-wrapper');
+    var sl = new CanvasLoader('profiles-loading');
     sl.setColor('#888888');
     sl.setDiameter(24);
     sl.setDensity(30);
@@ -120,6 +120,7 @@ function loader_canvas_icon_init() {
 
 $(document).ready(function() {
     loader_canvas_icon_init();
+    $('#profiles-loading').append('<div>Please wait while viz magic happens!</div>');
     $.ajax({
              type: 'GET',
              url: '/api/v1/rep/?limit=500',

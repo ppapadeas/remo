@@ -209,3 +209,11 @@ class UserStatusForm(happyforms.ModelForm):
     class Meta:
         model = UserStatus
         fields = ['expected_date', 'replacement_rep']
+
+
+class RepOfTheMonthNomineeForm(happyforms.ModelForm):
+    """Model Form for nominating the Rep of the month."""
+
+    class Meta:
+        model = UserProfile
+        fields = ['is_rotm_nominee']

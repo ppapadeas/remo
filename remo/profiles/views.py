@@ -147,6 +147,8 @@ def view_profile(request, display_name):
             not request.user.has_perm('profiles.can_edit_profiles')):
             raise Http404
 
+    nominee_form = forms.RepOfTheMonthNomineeForm(request.POST or None,
+                                                  instance=user)
     usergroups = user.groups.filter(Q(name='Mentor') | Q(name='Council'))
     data = {'pageuser': user,
             'user_profile': user.userprofile,
@@ -179,6 +181,8 @@ def view_profile(request, display_name):
     data['future_events'] = get_events_for_user(user, from_date=today)
     data['past_events'] = past_user_events.reverse()[:10]
     data['featured_rep'] = user.featuredrep_users.all()
+    data['request_user'] = request.user
+    data['nominee_form'] = nominee_form
 
     return render(request, 'profiles_view.html', data)
 

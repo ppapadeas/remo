@@ -72,26 +72,6 @@ Mozilla Reps - Profile of {{ user_profile.display_name }}
   </div>
   <div class="row">
     <div class="large-6 columns">
-      {% if user_is_mentor(request_user) %}
-      <div class="row">
-        <div class="large-1 columns pictogram">
-          <div class="pict-icon large medal"></div>
-        </div>
-        <div class="large-11 columns">
-          <form id="view-profile-form" method="post"
-            actions="{{ url('profiles_nominate_rep', user.userprofile.display_name) }}">
-            {{ csrf() }}
-            <p class="profile-item">
-              <label class="label radius" for="id_is_rotm_nominee">
-                Nominate for Rep of the month!
-              </label>
-              {{ nominee_form.is_rotm_nominee }}
-              {{ field_errors(nominee_form.is_rotm_nominee) }}
-            </p>
-          </form>
-        </div>
-      </div>
-      {% endif %}
       {% if user_profile.is_unavailable %}
         <div class="row">
           <div class="large-1 columns pictogram">
@@ -211,7 +191,7 @@ Mozilla Reps - Profile of {{ user_profile.display_name }}
 
     <div class="large-6 columns">
       <!-- The following div.row should be displayed if usergroups OR featuredrep -->
-      {% if usergroups or featured_rep.count() %}
+      {% if usergroups or featured_rep.count() or user_is_mentor(request_user) %}
         <div class="row profile-detail-list">
           <div class="large-1 columns pictogram">
             <div class="pict-icon large award"></div>
@@ -254,6 +234,13 @@ Mozilla Reps - Profile of {{ user_profile.display_name }}
                   {% endif %}
                 {% endfor %}
               </h6>
+            {% endif %}
+            {% if user_is_mentor(request_user) %}
+              <p class="profile-item">
+                <a href="#" class="small button disabled">
+                  Nominate for Rep of the month
+                </a>
+              </p>
             {% endif %}
           </div>
         </div>
